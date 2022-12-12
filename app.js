@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const { default: mongoose } = require("mongoose");
 const nodemailer = require("nodemailer")
 const utility = require("./mailer");
+const port = process.env.PORT || 8000 ;
 
 // var session = require("express-session")
 
@@ -167,7 +168,7 @@ app.get('/good/:id', (req, res) => {
 
     });
 
-    app.listen(8000, () => {
+    app.listen(port, () => {
         console.log("app is running");
 
     })
