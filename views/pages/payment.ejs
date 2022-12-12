@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+
+	<title>Razorpay Web-Integration</title>
+</head>
+
+<body>
+	<hr/>
+	<h2>AN EXCLUSIVE SESSION WITH FOUNDER OF GEEKS OF GEEKS</h2>
+	<h3>Description</h3>
+
+	<ul>
+		<li>GRAB THIS </li>
+		<li>
+			BOOK YOUR SEATS NOW !!
+		</li>
+		<li>oNCE IN LIFE TIME OPPURTUNITY TO MEET TO MR. SANDEEP JAIN</li>
+	</ul>
+
+	<span> Cost:- 20 Rupees
+        	
+	</span><button id="pay-button">
+			Pay Now & Get Access
+		</button></span> 
+	<hr/>
+</span>
+<a href="/good/<%= id %>" id="review"> <button id="reviewBtn" disabled="disabled">REVIEW THE FORM</button></a>
+
+<!-- <button id="disable">Disable/Enable</button> -->
+</body>
+
+</html>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+// document.getElementById("reviewBtn").disabled = true;
+
+document.getElementById("pay-button").addEventListener("click", function() {
+	// console.log("I was clicked")
+	document.getElementById("reviewBtn").disabled = false;
+	document.getElementById("pay-button").disabled = true;
+})
+
+
+var options = {
+	"key": "rzp_test_ns4OCYxxFjJ3PC",
+	"amount": 2000,
+	"currency": "INR",
+	"name": "Blockchain Research Lab",
+	"description": "Pay & Checkout this ",	
+	"handler": function (response){
+		console.log(response)
+		alert("This step of Payment Succeeded");
+	},
+	"prefill": {
+		//Here we are prefilling random contact
+		"contact":"9368854607",
+		//name and email id, so while checkout
+		"name": "Harsh Saxena",
+		
+	},
+	"notes" : {
+		"description":"Best Course for SDE placements",
+		
+	},
+	
+};
+var razorpayObject = new Razorpay(options);
+console.log(razorpayObject);
+razorpayObject.on('payment.failed', function (response){
+		console.log(response);
+		alert("This step of Payment Failed");
+});
+	
+document.getElementById('pay-button').onclick = function(e){
+	razorpayObject.open();
+	e.preventDefault();
+	
+}
+
+// let button = document.getElementById('review');
+//  if(razorpayObject.on('payment.failed')){
+//   button.style.pointerEvents="none";
+//  }
+//  else{
+//     button.style.pointerEvents="auto";
+//  }
+
+// let button = document.querySelector(".review");
+
+// button.disabled = true; //setting button state to disabled
+
+// input.addEventListener("change", stateHandle);
+
+// // function stateHandle() {
+// //     if (document.querySelector(".input").value === "") {
+// //         button.disabled = true; //button remains disabled
+// //     } else {
+// //         button.disabled = false; //button is enabled
+//     }
+// }
+
+
+</script>

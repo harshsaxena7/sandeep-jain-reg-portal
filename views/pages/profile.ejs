@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: rgb(183, 237, 183);
+    }
+    .userInfo {
+        width: fit-content;
+        margin: auto;
+        position: relative;
+        top: 4rem;
+    }
+    h2 {
+        width: fit-content;
+        margin: auto;
+    }
+    .details {
+        width: fit-content;
+        margin: auto;
+        position: relative;
+        top: 1rem;
+        text-align: center;
+    }
+    #userImg {
+        border-radius: 50%;
+    }
+    #userImg img {
+        border-radius: 50%;
+        margin-left: 38%;
+        margin-top: 1.3rem;
+    }
+    #username {
+        font-weight: 700;
+    }
+    #mail {
+        font-weight: 700;
+    }
+    #payNow {
+        width: fit-content;
+        position: relative;
+        left: 12.5rem;
+    }
+</style>
+<body>
+    <div class="userInfo">
+<p>
+    <h2>Your Login was Successful</h2>
+    <div class="details">
+        <div id="username"><%= (newUser != undefined && newUser != "") ? newUser.username : "" %>  </div>
+        <div id="mail"><%= (newUser != undefined && newUser != "") ? newUser.email : "" %> </div>
+    </div>
+   
+    <div id="userImg">
+        <img src="<%=newUser.pic%>"  height="100" width="100" alt=""> 
+    </div>
+    
+</p>
+<div class="form">
+    <form action="/profile" method="POST">
+        <label>Roll number: </label>
+        <input type="number" placeholder="rollnumber" name="rollnumber"><br><br>
+       
+        <label>Student no: </label>
+        <input type="number" placeholder="studentno" name="studentno">
+    <br><br>
+        <label>Branch: </label>
+        <input type="text" placeholder="branch" name="branch">
+        <input type="hidden" placeholder="_id" name="_id" value="<%=newUser._id%>""><br><br>
+        <div id="payNow">
+            <button>GO TO PAYMENT PAGE</button> 
+       </div>
+    </form>
+</div>  
+
+</div>
+</body>
+</html>
+
+
