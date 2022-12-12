@@ -18,9 +18,9 @@ passport.use(new GoogleStrategy({
 
     async function (request, response, accessToken, refreshToken, profile, done) {
 
-        // if (profile._json.domain !== 'akgec.ac.in') {
-        //     done(new Error("Wrong domain!"));
-        // }
+        if (profile._json.domain !== 'akgec.ac.in') {
+            done(new Error("Wrong domain!"));
+        }
 
         console.log(profile);
         let newUser = {};
